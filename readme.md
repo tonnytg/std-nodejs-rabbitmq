@@ -1,8 +1,9 @@
 ## Demo RabbitMQ and NodeJS
 
 Olá esse repo é apenas um teste de NodeJS e RabbitMQ<br/>
-Eu utilizei a demo do site do RabbitMQ + Express adaptador com Docker-Compose<br/>
-Com isso consigo ter um Environment de teste com um Forms.
+Eu utilizei [a demo do site do RabbitMQ](https://github.com/rabbitmq/rabbitmq-tutorials/tree/master/javascript-nodejs) + Express e adaptei<br/>
+Coloquei o express com um form, para receber o post da mensage. Com isso consigo ter um Environment de teste com um Forms.<br/>
+Deixei tudo com docker-compose, assim da para trabalhar com containers distribuidos.
 
 A ideia é bem simples, acessar o index, enviar mensagem onde o Sender manda para o RabbitMQ na fila `hello` e processa isso depois com o receiver.
 
