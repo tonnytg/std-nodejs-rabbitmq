@@ -2,17 +2,14 @@ version: '3'
 
 services:
   rabbitserver:
-    image: rabbitmq
-    command: rabbitmq-plugins enable --offline rabbitmq_management
+    build:
+      context: rabbitmq
     container_name: rabbitserver
-    restart: always
     tty: true
     ports:
-      - "8080:80"
       - "5671:5671"
+      - "5672:5672"
       - "15672:15672"
-    environment:
-      - TEST=test
     networks:
       - netrabbit
 
@@ -20,11 +17,26 @@ services:
     build:
       context: receiver
     container_name: receiver
+    restart: always
+    links:
+      - "rabbitserver:rabbitserver"
     networks:
       - netrabbit
     tty: true
+    depends_on:
+      - rabbitserver
+
+  sender:
+    build:
+      context: sender
+    container_name: sender
+    links:
+      - "rabbitserver:rabbitserver"
+    networks:
+      - netrabbit
     ports:
-      - "8080:8080"
+      - "3000:3000"
+    tty: true
     depends_on:
       - rabbitserver
 
