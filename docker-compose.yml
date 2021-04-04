@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  rabbitserver:
+    image: rabbitmq
+    command: rabbitmq-plugins enable --offline rabbitmq_management
+    container_name: rabbitserver
+    restart: always
+    tty: true
+    ports:
+      - "8080:80"
+      - "5671:5671"
+      - "15672:15672"
+    environment:
+      - TEST=test
+    networks:
+      - netrabbit
+
+  receiver:
+    build:
+      context: receiver
+    container_name: receiver
+    networks:
+      - netrabbit
+    tty: true
+    ports:
+      - "8080:8080"
+    depends_on:
+      - rabbitserver
+
+networks:
+  netrabbit:
+    driver: bridge
