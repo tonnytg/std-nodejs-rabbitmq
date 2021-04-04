@@ -17,6 +17,8 @@ We have here three containers:
 Clone this repo:<br/>
 run `docker-compose up --build -d`
 
+### Check Processed Message
+Check logs `docker-compose logs receiver`
 
 ### Troubleshooting
 Check docker-compose containers are running:<br/>
