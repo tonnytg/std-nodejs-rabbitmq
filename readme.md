@@ -9,9 +9,9 @@ A ideia é bem simples, acessar o index, enviar mensagem onde o Sender manda par
 
 ### About
 We have here three containers:
-- RabbitMQ Server
-- Receiver
-- Sender
+- RabbitMQ Server -> vai ficar ouvindo
+- Receiver -> Vai bater no RabbitMQ e processar o que está na fila
+- Sender -> Vai enviar para fila os pedidos
 
 
 ### How to use
